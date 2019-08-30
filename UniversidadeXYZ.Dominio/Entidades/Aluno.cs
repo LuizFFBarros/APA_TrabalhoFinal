@@ -6,5 +6,6 @@ namespace UniversidadeXYZ.Dominio.Entidades
 {
     public class Aluno : BaseEntity
     {
+        public string Nome { get; set; }
     }
 }
