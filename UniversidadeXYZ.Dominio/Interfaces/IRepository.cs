@@ -9,7 +9,7 @@ namespace UniversidadeXYZ.Dominio.Interfaces
     {
         void Insert(T obj);
         void Update(T obj);
-        void Delete(T obj);
+        void Delete(int id);
         T Select(int id);
         IList<T> Select();
     }
