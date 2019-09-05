@@ -8,5 +8,7 @@ namespace UniversidadeXYZ.Dominio.Entidades
     public abstract class BaseEntity
     {
         public virtual int Id { set; get; }
+
+
     }
 }

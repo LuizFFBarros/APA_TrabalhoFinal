@@ -2,11 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UniversidadeXYZ.Dominio.Entidades;
+using UniversidadeXYZ.Infra.Data.Mapping;
 
 namespace UniversidadeXYZ.Infra.Data.Context
 {
     public class SQLContext : DbContext
     {
+        public DbSet<Aluno> Aluno { set; get; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -17,7 +20,7 @@ namespace UniversidadeXYZ.Infra.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<User>(new UserMap().Configure);
+            modelBuilder.Entity<Aluno>(new AlunoMap().Configure);
         } 
     }
 }

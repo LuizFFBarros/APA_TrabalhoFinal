@@ -11,16 +11,18 @@ namespace UniversidadeXYZ.Infra.Data.Repository
     public class BaseRepository<T> : IRepository<T> where  T : BaseEntity
     {
         private SQLContext context = new SQLContext();
-        public void Insert(T obj)
+        public T Insert(T obj)
         {
             context.Set<T>().Add(obj);
             context.SaveChanges();
+            return obj;
         }
 
-        public void Update(T obj)
+        public T Update(T obj)
         {
             context.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             context.SaveChanges();
+            return obj;
         }
 
         public void Delete(int id)

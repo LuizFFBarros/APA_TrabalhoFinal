@@ -1,13 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Validators\" />
     <Folder Include="Dto\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UniversidadeXYZ.Dominio\UniversidadeXYZ.Dominio.csproj" />
+    <ProjectReference Include="..\UniversidadeXYZ.Infra.Data\UniversidadeXYZ.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>
