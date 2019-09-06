@@ -9,7 +9,11 @@ namespace UniversidadeXYZ.Service.Services
 {
     public class AlunoService : BaseService<Aluno>
     {
-        private readonly BaseRepository<Aluno> alunoRepository = new BaseRepository<Aluno>(); 
+        private readonly IRepository<Aluno> _repository;
+        public AlunoService(IRepository<Aluno> repository)
+        {
+            _repository = repository;
+        }
 
         
 

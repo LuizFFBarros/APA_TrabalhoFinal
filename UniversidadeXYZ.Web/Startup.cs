@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using UniversidadeXYZ.Dominio.Entidades;
+using UniversidadeXYZ.Dominio.Interfaces;
+using UniversidadeXYZ.Infra.Data.Repository;
+using UniversidadeXYZ.Service.Services;
 
 namespace UniversidadeXYZ.Web
 {
@@ -30,7 +34,8 @@ namespace UniversidadeXYZ.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddSingleton(typeof(IService<Aluno>), typeof(AlunoService));
+            services.AddSingleton(typeof(IRepository<Aluno>), typeof(AlunoRepository));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
