@@ -11,5 +11,7 @@ namespace UniversidadeXYZ.Dominio.Entidades
         public int Telefone { get; set; }
         public string Logradouro { get; set; }
 
+        public virtual ICollection<Matricula> Matricula { get; set; }
+
     }
 }

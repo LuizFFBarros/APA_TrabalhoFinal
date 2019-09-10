@@ -11,6 +11,7 @@ namespace UniversidadeXYZ.Dominio.Entidades
 
 
         public virtual Aluno Aluno { get; set; }
+        public virtual DisciplinaTurma DisciplinaTurma { get; set; }
 
     }
 }

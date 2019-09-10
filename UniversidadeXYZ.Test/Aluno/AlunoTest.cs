@@ -5,6 +5,7 @@ using UniversidadeXYZ.Service.Services;
 using UniversidadeXYZ.Service.Validators;
 using UniversidadeXYZ.Dominio.Entidades;
 using Xunit;
+using UniversidadeXYZ.Infra.Data.Repository;
 
 namespace UniversidadeXYZ.Test.Aluno
 {
@@ -13,7 +14,8 @@ namespace UniversidadeXYZ.Test.Aluno
         [Fact]
         public void TestaInclusao()
         {
-            AlunoService alunoService = new AlunoService();
+            AlunoRepository repository = new AlunoRepository();
+            AlunoService alunoService = new AlunoService(repository);
 
             Dominio.Entidades.Aluno aluno = new Dominio.Entidades.Aluno
             {

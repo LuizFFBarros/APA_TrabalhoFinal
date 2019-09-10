@@ -6,8 +6,11 @@ namespace UniversidadeXYZ.Dominio.Entidades
 {
     public class DisciplinaTurma : BaseEntity
     {
-        public virtual ICollection<Disciplina> Disciplina { get; set; }
-        public virtual ICollection<Turma> Turma { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
+        public int CodigoDisciplina { get; set; }
+        public virtual Turma Turma { get; set; }
+        public int CodigoDaTurma { get; set; }
+        public decimal QuantidadeVagas { get; set; }
 
         public virtual ICollection<Matricula> Matricula { get; set; }
     } 
