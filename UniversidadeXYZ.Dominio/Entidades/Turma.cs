@@ -10,6 +10,5 @@ namespace UniversidadeXYZ.Dominio.Entidades
         public DateTime DataInicio { get; set; }
 
         public virtual ICollection<DisciplinaTurma> DisciplinaTurma { get; set; }
-        public virtual ICollection<Matricula> Matricula { set; get; }
     }
 }
