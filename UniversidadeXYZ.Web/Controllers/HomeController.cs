@@ -20,7 +20,7 @@ namespace UniversidadeXYZ.Web.Controllers
         }
         public IActionResult Index()
         {
-            _aluno.Insert<AlunoValidator>(new Aluno { });
+            //_aluno.Insert<AlunoValidator>(new Aluno { });
             return View();
         }
 
