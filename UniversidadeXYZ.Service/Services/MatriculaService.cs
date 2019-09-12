@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
-using UniversidadeXYZ.Infra.Data.Repository;
 
 namespace UniversidadeXYZ.Service.Services
 {
-    public class AlunoService : BaseService<Aluno>
+    public class MatriculaService : BaseService<Matricula>
     {
-        private readonly IRepository<Aluno> _repository;
-        public AlunoService(IRepository<Aluno> repository)
+        private readonly IRepository<Matricula> _repository;
+        public MatriculaService(IRepository<Matricula> repository)
         {
             _repository = repository;
         }
 
-        public Aluno Inserir(Aluno novo)
+        public Matricula Inserir(Matricula novo)
         {
             var retorno = _repository.Insert(novo);
             return retorno;
