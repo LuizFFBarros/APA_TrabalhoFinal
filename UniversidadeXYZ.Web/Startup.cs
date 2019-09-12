@@ -35,7 +35,16 @@ namespace UniversidadeXYZ.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddSingleton(typeof(IService<Aluno>), typeof(AlunoService));
+            services.AddSingleton(typeof(IService<Disciplina>), typeof(DisciplinaService));
+            services.AddSingleton(typeof(IService<DisciplinaTurma>), typeof(DisciplinaTurmaService));
+            services.AddSingleton(typeof(IService<Matricula>), typeof(MatriculaService));
+            services.AddSingleton(typeof(IService<Turma>), typeof(TurmaService));
+
             services.AddSingleton(typeof(IRepository<Aluno>), typeof(AlunoRepository));
+            services.AddSingleton(typeof(IRepository<Disciplina>), typeof(DisciplinaRepository));
+            services.AddSingleton(typeof(IRepository<DisciplinaTurma>), typeof(DisciplinaTurmaRepository));
+            services.AddSingleton(typeof(IRepository<Matricula>), typeof(MatriculaRepository));
+            services.AddSingleton(typeof(IRepository<Turma>), typeof(TurmaRepository));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
