@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace UniversidadeXYZ.Dominio.Entidades
+namespace UniversidadeXYZ.Web.Models
 {
-    public class Aluno : BaseEntity
+    public class AlunoModel
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public long CPF { get; set; }
-        public int Telefone { get; set; }
+        public long Telefone { get; set; }
         public string Logradouro { get; set; }
-
-        public virtual ICollection<Matricula> Matricula { get; set; }
-
     }
 }

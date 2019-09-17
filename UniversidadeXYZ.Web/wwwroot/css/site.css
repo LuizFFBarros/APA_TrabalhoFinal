@@ -35,3 +35,15 @@ body {
         display: none;
     }
 }
+.btn-menu {
+    background: #b5b2b2;
+    margin: 5px;
+    padding: 6px 12px !important;
+    color: black;
+}
+
+.btn-menu:hover {
+    background: #4c4c4b;
+    color: white;
+}
+

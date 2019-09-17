@@ -13,14 +13,21 @@ namespace UniversidadeXYZ.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IService<Aluno> _aluno;
-        public HomeController(IService<Aluno> aluno)
+
+        //private readonly IService<ServicoCuringa> _servicoCuringa;
+
+        public HomeController()
         {
-            _aluno = aluno;
+            //Carina, aqui eu posso popular o banco, como fiz na controller de aluno, na qual populo apenas a tela.
+            //se nao houver registro algum no banco, chamamos um metodo em um servico "curinga" e ele realizaria uma pre carga no banco.
+            //quando a aplicação inicia ela comeca pela Home, seria este o lugar para verificarmos e popular. Uma alternativa válida
+
+
+            //_servicoCuringa.VerificarEPopularBase();
+            
         }
         public IActionResult Index()
         {
-            //_aluno.Insert<AlunoValidator>(new Aluno { });
             return View();
         }
 
