@@ -8,7 +8,6 @@ namespace UniversidadeXYZ.Dominio.Entidades
     {
         public virtual Disciplina Disciplina { get; set; }
         public int CodigoDisciplina { get; set; }
-        public virtual Turma Turma { get; set; }
         public int CodigoDaTurma { get; set; }
         public decimal QuantidadeVagas { get; set; }
 
