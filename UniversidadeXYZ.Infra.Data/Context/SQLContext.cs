@@ -15,7 +15,7 @@ namespace UniversidadeXYZ.Infra.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=UniversidadeXYZ;Integrated Security=True");
+                @"Server=(localdb)\mssqllocaldb;Database=UniversidadeXYZ;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
