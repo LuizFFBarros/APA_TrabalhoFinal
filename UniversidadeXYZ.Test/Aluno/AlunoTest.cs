@@ -19,7 +19,6 @@ namespace UniversidadeXYZ.Test.Aluno
 
             Dominio.Entidades.Aluno aluno = new Dominio.Entidades.Aluno
             {
-                Id = 1,
                 CPF = 12345678900,
                 Nome = "Aluno 1",
                 Logradouro = "Rua Aluno",

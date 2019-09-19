@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Infra.Data.Repository;
 using UniversidadeXYZ.Service.Services;
+using UniversidadeXYZ.Web.Models;
 
 namespace UniversidadeXYZ.Web
 {
@@ -47,6 +49,15 @@ namespace UniversidadeXYZ.Web
             services.AddSingleton(typeof(IRepository<Turma>), typeof(TurmaRepository));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Aluno, AlunoModel>();
+            });
+
+            IMapper mapper = config.CreateMapper();
+
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

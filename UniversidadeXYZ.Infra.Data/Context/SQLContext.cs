@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Infra.Data.Mapping;
 
@@ -17,8 +14,8 @@ namespace UniversidadeXYZ.Infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseInMemoryDatabase(databaseName: "UniversidadeXYZ");
+            optionsBuilder.UseSqlServer(
+                @"Server=(localdb)\mssqllocaldb;Database=UniversidadeXYZ;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,6 +27,8 @@ namespace UniversidadeXYZ.Infra.Data.Context
             modelBuilder.Entity<DisciplinaTurma>(new DisciplinaTurmaMap().Configure);
             modelBuilder.Entity<Matricula>(new MatriculaMap().Configure);
             modelBuilder.Entity<Turma>(new TurmaMap().Configure);
+
+            modelBuilder.Entity<Aluno>().HasData(new Aluno { CPF = 1238723, Nome = "Carina", Logradouro = "Rua A", Telefone = 2323 });
         } 
     }
 }
