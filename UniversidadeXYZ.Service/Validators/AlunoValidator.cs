@@ -13,6 +13,9 @@ namespace UniversidadeXYZ.Service.Validators
             RuleFor(a => a)
                 .NotNull()
                 .OnAnyFailure(x => { throw new ArgumentException($"Objeto {nameof(Aluno)} nullo"); });
+            RuleFor(a => a)
+                .Must(a => a.CPF != default(long))
+                .OnFailure(x => { throw new ArgumentException("CPF nao pode ser nullo"); });
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Infra.Data.Repository;
 using UniversidadeXYZ.Service.Services;
+using UniversidadeXYZ.Web.AutoMapper;
 
 namespace UniversidadeXYZ.Web
 {
@@ -34,12 +36,18 @@ namespace UniversidadeXYZ.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            //AutoMapper
+            services.AddSingleton(MappingProfile.configure().CreateMapper());
+
+            //Services
             services.AddSingleton(typeof(IService<Aluno>), typeof(AlunoService));
             services.AddSingleton(typeof(IService<Disciplina>), typeof(DisciplinaService));
             services.AddSingleton(typeof(IService<DisciplinaTurma>), typeof(DisciplinaTurmaService));
             services.AddSingleton(typeof(IService<Matricula>), typeof(MatriculaService));
             services.AddSingleton(typeof(IService<Turma>), typeof(TurmaService));
 
+            //Repository
             services.AddSingleton(typeof(IRepository<Aluno>), typeof(AlunoRepository));
             services.AddSingleton(typeof(IRepository<Disciplina>), typeof(DisciplinaRepository));
             services.AddSingleton(typeof(IRepository<DisciplinaTurma>), typeof(DisciplinaTurmaRepository));

@@ -40,6 +40,12 @@ namespace UniversidadeXYZ.Infra.Data.Repository
         {
             return context.Set<T>().Find(id);
         }
+
+        public int GetMaxCodigo()
+        {
+            return (context.Set<T>().Any() ? context.Set<T>().Max(a => a.Codigo) : 0);
+        }
+
     }
 }
 
