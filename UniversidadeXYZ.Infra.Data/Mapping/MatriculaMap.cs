@@ -20,6 +20,12 @@ namespace UniversidadeXYZ.Infra.Data.Mapping
             builder.Property(a => a.CodigoAluno)
                    .IsRequired();
 
+            builder.Property(a => a.CodigoDaTurma)
+                   .IsRequired();
+
+            builder.Property(a => a.CodigoDisciplina)
+                   .IsRequired();
+
             builder.HasOne(a => a.DisciplinaTurma)
                    .WithMany(b => b.Matricula);
 
