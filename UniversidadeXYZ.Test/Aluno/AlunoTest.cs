@@ -28,9 +28,7 @@ namespace UniversidadeXYZ.Test.Aluno
 
            var retorno = alunoService.Insert<AlunoValidator>(aluno);
 
-            Assert.True(retorno != null);
-
-          
+            Assert.True(retorno != null);          
             
         }
     }
