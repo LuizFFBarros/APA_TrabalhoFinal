@@ -6,13 +6,13 @@ using UniversidadeXYZ.Dominio.Entidades;
 
 namespace UniversidadeXYZ.Service.Validators
 {
-    public class AlunoValidator : AbstractValidator<Aluno>
+    public class MatriculaValidator : AbstractValidator<Matricula>
     {
-        public AlunoValidator()
+        public MatriculaValidator()
         {
             RuleFor(a => a)
                 .NotNull()
-                .OnAnyFailure(x => { throw new ArgumentException($"Objeto {nameof(Aluno)} nulo"); });
+                .OnAnyFailure(x => { throw new ArgumentException($"Objeto {nameof(Matricula)} nulo"); });
         }
     }
 }
