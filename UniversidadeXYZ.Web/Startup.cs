@@ -49,7 +49,7 @@ namespace UniversidadeXYZ.Web
             services.AddSingleton(typeof(IService<Turma>), typeof(TurmaService));
 
             //Repository
-            services.AddSingleton(typeof(IRepository<Aluno>), typeof(AlunoRepository));
+            //services.AddSingleton(typeof(IRepository<Aluno>), typeof(AlunoRepository));
             services.AddSingleton(typeof(IRepository<Disciplina>), typeof(DisciplinaRepository));
             services.AddSingleton(typeof(IRepository<DisciplinaTurma>), typeof(DisciplinaTurmaRepository));
             services.AddSingleton(typeof(IRepository<Matricula>), typeof(MatriculaRepository));

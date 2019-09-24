@@ -6,6 +6,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
+using UniversidadeXYZ.Infra.Data.Repository;
+using UniversidadeXYZ.Service.Services;
 using UniversidadeXYZ.Service.Validators;
 using UniversidadeXYZ.Web.Models;
 
@@ -13,20 +15,22 @@ namespace UniversidadeXYZ.Web.Controllers
 {
     public class AlunoController : Controller
     {
-        private readonly IService<Aluno> _alunoService;
-        private readonly IMapper _mapper;
+        IMapper _mapper;
+        private readonly IService<Aluno> _serviceAluno;
         public AlunoController(IMapper mapper, IService<Aluno> alunoService)
         {
             _mapper = mapper;
-            _alunoService = alunoService;
-
+            _serviceAluno = alunoService;
+             
         }
 
         public IActionResult Index()
         {
-            var alunosEntity = _alunoService.Select();
-            var listaAlunosModel= _mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoModel>>(alunosEntity);
-            return View(listaAlunosModel);
+            var listaAlunos = _mapper.Map<List<AlunoModel>>(_serviceAluno.Select());
+            return View(listaAlunos);
+            //var alunosEntity = _alunoService.Select();
+            //var listaAlunosModel= _mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoModel>>(alunosEntity);
+            //return View(listaAlunosModel);
 
         }
 
