@@ -6,5 +6,6 @@ namespace UniversidadeXYZ.Infra.Data.Repository
 {
     public class CobolRepository
     {
+        
     }
 }

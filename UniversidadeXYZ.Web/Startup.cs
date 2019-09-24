@@ -36,7 +36,7 @@ namespace UniversidadeXYZ.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddSingleton(typeof(IService<Aluno>), typeof(AlunoService));
+            //services.AddSingleton(typeof(IService<Aluno>), typeof(AlunoService));
             services.AddSingleton(typeof(IService<Disciplina>), typeof(DisciplinaService));
             services.AddSingleton(typeof(IService<DisciplinaTurma>), typeof(DisciplinaTurmaService));
             services.AddSingleton(typeof(IService<Matricula>), typeof(MatriculaService));
@@ -49,6 +49,8 @@ namespace UniversidadeXYZ.Web
             services.AddSingleton(typeof(IRepository<Turma>), typeof(TurmaRepository));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped(typeof(COBOL.Services.AlunoService), typeof(AlunoService));
 
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {

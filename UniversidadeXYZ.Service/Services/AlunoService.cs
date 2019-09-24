@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 using FluentValidation;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
@@ -10,6 +11,14 @@ namespace UniversidadeXYZ.Service.Services
 {
     public class AlunoService : IService<Aluno>
     {
+        private readonly IMapper _mapper;
+        private COBOL.Services.AlunoService _alunoService;
+        public AlunoService(IMapper mapper, COBOL.Services.AlunoService alunoService)
+        {
+            _mapper = mapper;
+            _alunoService = alunoService;
+        }
+        
         public void Delete(int id)
         {
             throw new NotImplementedException();
@@ -27,11 +36,9 @@ namespace UniversidadeXYZ.Service.Services
 
         public IList<Aluno> Select()
         {
-            return new List<Aluno>
-            {
-                new Aluno{ Codigo = 1, Nome = "external service" },
-                new Aluno{ Codigo = 2, Nome = "external service" }
-            };
+
+            return _mapper.Map<IList<COBOL.Entidades.Aluno>, IList<Aluno>>(_alunoService.Select());
+            
         }
 
         public Aluno Update<V>(Aluno obj) where V : AbstractValidator<Aluno>

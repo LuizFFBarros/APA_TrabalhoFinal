@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UniversidadeXYZ.COBOL\UniversidadeXYZ.COBOL.csproj" />
     <ProjectReference Include="..\UniversidadeXYZ.Dominio\UniversidadeXYZ.Dominio.csproj" />
   </ItemGroup>
 

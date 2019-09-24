@@ -16,33 +16,35 @@
 </div>
 <hr />
 <div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            @Html.LabelFor(m => m.Nome, new { @id = "lblNome" })
-            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @id = "txtNome" })
+    <form asp-action="SalvarAluno">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Nome, new { @id = "lblNome" })
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @id = "txtNome" })
+            </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="form-group">
-            @Html.LabelFor(m => m.CPF, new { @id = "lblCPF" })
-            @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @id = "txtCPF" })
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CPF, new { @id = "lblCPF" })
+                @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @id = "txtCPF" })
+            </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="form-group">
-            @Html.LabelFor(m => m.Logradouro, new { @id = "lblLogradouro" })
-            @Html.TextBoxFor(m => m.Logradouro, new { @class = "form-control", @id = "txtLogradouro" })
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Logradouro, new { @id = "lblLogradouro" })
+                @Html.TextBoxFor(m => m.Logradouro, new { @class = "form-control", @id = "txtLogradouro" })
+            </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="form-group">
-            @Html.LabelFor(m => m.Telefone, new { @id = "lblTelefone" })
-            @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control", @id = "txtTelefone" })
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Telefone, new { @id = "lblTelefone" })
+                @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control", @id = "txtTelefone" })
+            </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <input type="button" class="btn-primary btn btn-success" id="btnSalvar" value="Salvar" />
-        <input type="button" class="btn-primary btn btn-danger" id="btnSalvar" value="Limpar" />
-    </div>
+        <div class="col-md-12">
+            <input type="submit" class="btn-primary btn btn-success" id="btnSalvar" value="Salvar" />
+            <input type="button" class="btn-primary btn btn-danger" id="btnSalvar" value="Limpar" />
+        </div>
+    </form>
 </div>
 
