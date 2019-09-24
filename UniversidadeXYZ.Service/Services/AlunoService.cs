@@ -1,24 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FluentValidation;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Infra.Data.Repository;
 
 namespace UniversidadeXYZ.Service.Services
 {
-    public class AlunoService : BaseService<Aluno>
+    public class AlunoService : IService<Aluno>
     {
-        private readonly IRepository<Aluno> _repository;
-        public AlunoService(IRepository<Aluno> repository)
+        public void Delete(int id)
         {
-            _repository = repository;
+            throw new NotImplementedException();
         }
 
-        public Aluno Inserir(Aluno novo)
+        public Aluno Insert<V>(Aluno obj) where V : AbstractValidator<Aluno>
         {
-            var retorno = _repository.Insert(novo);
-            return retorno;
+            throw new NotImplementedException();
+        }
+
+        public Aluno Select(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Aluno> Select()
+        {
+            return new List<Aluno>
+            {
+                new Aluno{ Codigo = 1, Nome = "external service" },
+                new Aluno{ Codigo = 2, Nome = "external service" }
+            };
+        }
+
+        public Aluno Update<V>(Aluno obj) where V : AbstractValidator<Aluno>
+        {
+            throw new NotImplementedException();
         }
     }
 }
