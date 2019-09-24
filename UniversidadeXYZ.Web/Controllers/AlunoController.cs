@@ -34,10 +34,5 @@ namespace UniversidadeXYZ.Web.Controllers
         {
             return View();
         }
-        
-        public IActionResult SalvarAluno([FromForm] AlunoModel alunoModel)
-        {
-            return RedirectToAction("Index");
-        }
     }
 }
