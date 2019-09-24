@@ -8,9 +8,9 @@ namespace UniversidadeXYZ.Dominio.Entidades
     {
         public int CodigoMatricula { get; set; }
         public DateTime DataMatricula { get; set; }
-
-
-        public virtual Aluno Aluno { get; set; }
+        public int CodigoAluno { get; set; }
+        public int CodigoDaTurma { get; set; }
+        public int CodigoDisciplina { get; set; }
         public virtual DisciplinaTurma DisciplinaTurma { get; set; }
 
     }

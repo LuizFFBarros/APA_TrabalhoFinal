@@ -21,10 +21,9 @@ namespace UniversidadeXYZ.Infra.Data.Mapping
                 .WithMany(b => b.DisciplinaTurma)
                 .HasForeignKey(a => a.CodigoDisciplina);
 
-            builder.HasOne(a => a.Turma)
-                .WithMany(b => b.DisciplinaTurma)
-                .HasForeignKey(a => a.CodigoDaTurma);
-
+            builder.Property(a => a.CodigoDaTurma)
+                   .IsRequired();
+            
             builder.HasMany(a => a.Matricula)
                    .WithOne(b => b.DisciplinaTurma);
         }

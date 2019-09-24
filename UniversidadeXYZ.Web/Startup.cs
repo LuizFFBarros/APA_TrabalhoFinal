@@ -14,6 +14,7 @@ using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Infra.Data.Repository;
 using UniversidadeXYZ.Service.Services;
+using UniversidadeXYZ.Web.Models;
 using UniversidadeXYZ.Web.AutoMapper;
 
 namespace UniversidadeXYZ.Web

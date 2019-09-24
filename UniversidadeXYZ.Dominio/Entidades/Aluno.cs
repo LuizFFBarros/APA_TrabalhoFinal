@@ -8,7 +8,7 @@ namespace UniversidadeXYZ.Dominio.Entidades
     {
         public string Nome { get; set; }
         public long CPF { get; set; }
-        public int Telefone { get; set; }
+        public long Telefone { get; set; }
         public string Logradouro { get; set; }
 
         public virtual ICollection<Matricula> Matricula { get; set; }
