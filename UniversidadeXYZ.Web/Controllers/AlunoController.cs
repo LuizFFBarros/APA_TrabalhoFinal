@@ -16,17 +16,17 @@ namespace UniversidadeXYZ.Web.Controllers
     public class AlunoController : Controller
     {
         IMapper _mapper;
-        private readonly IService<Aluno> _serviceAluno;
+        private readonly IService<Aluno> _alunoService;
         public AlunoController(IMapper mapper, IService<Aluno> alunoService)
         {
             _mapper = mapper;
-            _serviceAluno = alunoService;
+            _alunoService = alunoService;
              
         }
 
         public IActionResult Index()
         {
-            var listaAlunos = _mapper.Map<List<AlunoModel>>(_serviceAluno.Select());
+            var listaAlunos = _mapper.Map<List<AlunoModel>>(_alunoService.Select());
             return View(listaAlunos);
             //var alunosEntity = _alunoService.Select();
             //var listaAlunosModel= _mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoModel>>(alunosEntity);
