@@ -6,6 +6,7 @@ namespace UniversidadeXYZ.Dominio.Entidades
 {
     public class Aluno : BaseEntity
     {
+        public int Codigo { get; set; }
         public string Nome { get; set; }
         public long CPF { get; set; }
         public long Telefone { get; set; }

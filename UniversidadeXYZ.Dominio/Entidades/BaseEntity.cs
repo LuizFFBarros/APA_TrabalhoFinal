@@ -7,7 +7,7 @@ namespace UniversidadeXYZ.Dominio.Entidades
 {
     public abstract class BaseEntity
     {
-        public int Codigo { get; set; }
+        //public int Codigo { get; set; }
 
     }
 }

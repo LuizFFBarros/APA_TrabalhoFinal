@@ -19,8 +19,6 @@ namespace UniversidadeXYZ.Service.Services
         public T Insert<V>(T obj) where V : AbstractValidator<T>
         {
             Validate(obj, Activator.CreateInstance<V>());
-            var maxCodigo = baseRepository.GetMaxCodigo();
-            obj.Codigo = maxCodigo + 1;
             var retorno  =baseRepository.Insert(obj);
             return retorno;
         }
