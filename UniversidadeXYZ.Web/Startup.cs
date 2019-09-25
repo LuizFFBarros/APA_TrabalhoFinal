@@ -22,6 +22,7 @@ namespace UniversidadeXYZ.Web
     public class Startup
     {
         public static COBOL.Services.AlunoService cobolAluno = new COBOL.Services.AlunoService();
+        public static COBOL.Services.TurmaService cobolTurma = new COBOL.Services.TurmaService();
 
         public Startup(IConfiguration configuration)
         {
@@ -45,6 +46,7 @@ namespace UniversidadeXYZ.Web
 
             //Services
             services.AddSingleton(cobolAluno);
+            services.AddSingleton(cobolTurma);
             services.AddSingleton(typeof(IService<Aluno>), typeof(AlunoService));
             services.AddSingleton(typeof(IService<Disciplina>), typeof(DisciplinaService));
             services.AddSingleton(typeof(IService<DisciplinaTurma>), typeof(DisciplinaTurmaService));
