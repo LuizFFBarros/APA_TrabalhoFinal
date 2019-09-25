@@ -21,8 +21,8 @@
         <ul class="nav navbar-nav">
             <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Aluno" asp-action="Index"></a></li>
             <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Aluno" asp-action="AdicionarAluno"></a></li>
-            <li><a class="btn-menu glyphicon glyphicon-pencil btn" asp-area="" asp-controller="" asp-action=""></a></li>
-            <li><a class="btn-menu glyphicon glyphicon-remove btn" asp-area="" asp-controller="" asp-action=""></a></li>
+            @*<li><a class="btn-menu glyphicon glyphicon-pencil btn" asp-area="" asp-controller="" asp-action=""></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-remove btn" asp-area="" asp-controller="" asp-action=""></a></li>*@
         </ul>
     </div>
 </div>
@@ -48,6 +48,7 @@
                         <td><label>@Model[i].CPF</label></td>
                         <td><label>@Model[i].Telefone</label></td>
                         <td><label>@Model[i].Logradouro</label></td>
+                        <td><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Aluno" asp-action="VisualizarMatriculas"></a></td>
                     </tr>
                 }
 
