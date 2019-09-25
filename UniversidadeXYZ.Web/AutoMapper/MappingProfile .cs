@@ -22,6 +22,8 @@ namespace UniversidadeXYZ.Web.AutoMapper
             // Add as many of these lines as you need to map your objects
             CreateMap<Aluno, AlunoModel>().ReverseMap();
             CreateMap<Matricula, MatriculaModel>().ReverseMap();
+            CreateMap<DisciplinaTurma, DisciplinaTurmaModel>().ReverseMap();
+            CreateMap<Disciplina, DisciplinaModel>().ReverseMap();
         }
     }
 }

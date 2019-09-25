@@ -32,9 +32,6 @@ namespace UniversidadeXYZ.Web.Controllers
         {
             var listaAlunos = _mapper.Map<List<AlunoModel>>(_alunoService.Select());
             return View(listaAlunos);
-            //var alunosEntity = _alunoService.Select();
-            //var listaAlunosModel= _mapper.Map<IEnumerable<Aluno>, IEnumerable<AlunoModel>>(alunosEntity);
-            //return View(listaAlunosModel);
 
         }
 
@@ -54,15 +51,12 @@ namespace UniversidadeXYZ.Web.Controllers
             catch (ArgumentException argEx)
             {
                 ViewBag.Erro = argEx.Message;
-                //return RedirectToAction("AdicionarAluno", alunoModel);
                 return View("AdicionarAluno", alunoModel);
             }
             catch (Exception ex)
             {
                 ViewBag.Erro = ex.Message;
 
-                //retornar view de erro cabuloso
-                //return ViewErroCabuloso();
             }
 
             return RedirectToAction("Index");
@@ -70,7 +64,7 @@ namespace UniversidadeXYZ.Web.Controllers
 
         public IActionResult VisualizarMatriculas(int codigoAluno)
         {
-            var listaMatriculasAluno = _mapper.Map<List<MatriculaModel>>(_matriculaService.BuscaMatriculasAluno(codigoAluno));
+            List<MatriculaModel> listaMatriculasAluno = _mapper.Map<List<MatriculaModel>>(_matriculaService.BuscaMatriculasAluno(codigoAluno));
 
             List<MatriculaAlunoModel> listaMatriculas = new List<MatriculaAlunoModel>();
 
