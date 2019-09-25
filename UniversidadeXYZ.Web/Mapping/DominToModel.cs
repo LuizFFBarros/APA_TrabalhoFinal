@@ -13,6 +13,9 @@ namespace UniversidadeXYZ.Web.Mapping
         public DominToModel()
         {
             CreateMap<Aluno, AlunoModel>();
+            CreateMap<Matricula, MatriculaModel>();
+            CreateMap<DisciplinaTurma, DisciplinaTurmaModel>();
+            CreateMap<Disciplina, DisciplinaModel>();
         }
     }
 }

@@ -69,7 +69,7 @@ namespace UniversidadeXYZ.COBOL.Services
 
             listAlunos.Add(new Aluno
             {
-                Codigo = 1,
+                Codigo = 2,
                 CPF = 32165498778,
                 Logradouro = "Rua teste",
                 Nome = "Pedro Oliveira",
@@ -78,7 +78,7 @@ namespace UniversidadeXYZ.COBOL.Services
 
             listAlunos.Add(new Aluno
             {
-                Codigo = 1,
+                Codigo = 3,
                 CPF = 32165498778,
                 Logradouro = "Rua teste",
                 Nome = "Bruna Santana",

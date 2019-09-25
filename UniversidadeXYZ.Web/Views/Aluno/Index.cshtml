@@ -37,6 +37,7 @@
                     <th>CPF</th>
                     <th>Telefone</th>
                     <th>Logradouro</th>
+                    <th>Matrículas</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +49,7 @@
                         <td><label>@Model[i].CPF</label></td>
                         <td><label>@Model[i].Telefone</label></td>
                         <td><label>@Model[i].Logradouro</label></td>
-                        <td><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Aluno" asp-action="VisualizarMatriculas"></a></td>
+                        <td><a class="btn-menu glyphicon glyphicon-book btn" asp-area="" asp-controller="Aluno" asp-action="VisualizarMatriculas" asp-route-codigoAluno="@Model[i].Codigo"></a></td>
                     </tr>
                 }
 
