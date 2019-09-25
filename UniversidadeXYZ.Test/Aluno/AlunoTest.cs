@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using UniversidadeXYZ.Service.Services;
 using UniversidadeXYZ.Service.Validators;
-using UniversidadeXYZ.Dominio.Entidades;
 using Xunit;
 using UniversidadeXYZ.Infra.Data.Repository;
+using UniversidadeXYZ.COBOL.Services;
 
 namespace UniversidadeXYZ.Test.Aluno
 {
@@ -14,24 +13,32 @@ namespace UniversidadeXYZ.Test.Aluno
         [Fact]
         public void TestaInclusao()
         {
-           // AlunoRepository repository = new AlunoRepository();
-           // AlunoService alunoService = new AlunoService(repository);
+            AlunoService alunoService = new AlunoService();
 
-           // Dominio.Entidades.Aluno aluno = new Dominio.Entidades.Aluno
-           // {
-           //     CPF = 12345678900,
-           //     Nome = "Aluno 1",
-           //     Logradouro = "Rua Aluno",
-           //     Telefone = 11223344
-           // };
-            
+            COBOL.Entidades.Aluno aluno = new COBOL.Entidades.Aluno
+            {
+                CPF = 1234567,
+                Nome = "Aluno 1",
+                Logradouro = "Rua Aluno",
+                Telefone = 11223344
+            };
 
-           //var retorno = alunoService.Insert<AlunoValidator>(aluno);
+            var retorno = alunoService.Insert(aluno);
 
-           // Assert.True(retorno != null);
-
-          
+            Assert.True(retorno != null);
             
         }
+
+        [Fact]
+        public void TestaBusca()
+        {
+            AlunoService alunoService = new AlunoService();
+            
+            var listaAlunos = alunoService.Select();
+
+            Assert.True(listaAlunos.Count > 0);
+
+        }
+
     }
 }
