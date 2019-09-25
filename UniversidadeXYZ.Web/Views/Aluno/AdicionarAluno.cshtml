@@ -25,7 +25,7 @@
 </div>
 <hr />
 <div class="row">
-    <form asp-controller="Aluno" asp-action="SalvarAluno" method="post">
+    <form id="fmrAluno" asp-controller="Aluno" asp-action="SalvarAluno" method="post">
         <!-- Input and Submit elements -->
 
         <div class="col-md-12">
@@ -54,8 +54,12 @@
         </div>
         <div class="col-md-12">
             <input type="submit" class="btn-primary btn btn-success" id="btnSalvar" value="Salvar" />
-            <input type="button" class="btn-primary btn btn-danger" id="btnLimpar" value="Limpar" />
+            <input type="button" class="btn-primary btn btn-danger" id="btnLimpar" value="Limpar" onclick="Limpar();" />
         </div>
     </form>
 </div>
-
+<script type="text/javascript">
+    function Limpar() {
+        $("#fmrAluno input:not(.a)").each(function (i, e) { $(e).val("") });
+    }
+</script>
