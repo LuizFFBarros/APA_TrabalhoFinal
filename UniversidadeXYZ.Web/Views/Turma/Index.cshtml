@@ -1,0 +1,60 @@
+﻿@model List<UniversidadeXYZ.Web.Models.AlunoModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h2>Area do Aluno</h2>
+@*<div class="row">
+        <div class="col-md-12">
+            <div class="menu">
+                <span class="btn-menu glyphicon glyphicon-plus btn" asp-controller="Home" asp-action="Index"></span>
+                <span class="btn-menu glyphicon glyphicon-pencil btn"></span>
+                <span class="btn-menu glyphicon glyphicon-remove btn"></span>
+            </div>
+        </div>
+    </div>*@
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav navbar-nav">
+            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Aluno" asp-action="Index"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Aluno" asp-action="AdicionarAluno"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-pencil btn" asp-area="" asp-controller="" asp-action=""></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-remove btn" asp-area="" asp-controller="" asp-action=""></a></li>
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Logradouro</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td><label>@Model[i].Codigo</label></td>
+                        <td><label>@Model[i].Nome</label></td>
+                        <td><label>@Model[i].CPF</label></td>
+                        <td><label>@Model[i].Telefone</label></td>
+                        <td><label>@Model[i].Logradouro</label></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
