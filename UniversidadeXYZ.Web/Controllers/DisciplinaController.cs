@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
+using UniversidadeXYZ.Service.Validators;
 using UniversidadeXYZ.Web.Models;
 
 namespace UniversidadeXYZ.Web.Controllers
@@ -28,6 +29,28 @@ namespace UniversidadeXYZ.Web.Controllers
         public IActionResult AdicionarDisciplina(DisciplinaModel disciplinaModel = null)
         {
             return View(disciplinaModel == null ? new DisciplinaModel() : disciplinaModel);
+        }
+
+        public IActionResult SalvarDisciplina([FromForm] DisciplinaModel disciplinaModel)
+        {
+            try
+            {
+                var disciplinaEntity = _mapper.Map<DisciplinaModel, Disciplina>(disciplinaModel);
+                disciplinaEntity = _disciplinaService.Insert<DisciplinaValidator>(disciplinaEntity);
+
+            }
+            catch (ArgumentException argEx)
+            {
+                ViewBag.Erro = argEx.Message;
+                return View("AdicionarDisciplina", disciplinaModel);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Erro = ex.Message;
+
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

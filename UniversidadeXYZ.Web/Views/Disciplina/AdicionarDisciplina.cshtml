@@ -1,7 +1,7 @@
-﻿@model UniversidadeXYZ.Web.Models.AlunoModel
+﻿@model UniversidadeXYZ.Web.Models.DisciplinaModel
 @{
     ViewData["Title"] = "AdicionarAluno";
-  
+
 }
 
 
@@ -12,12 +12,12 @@
     </script>
 }
 
-<h2>Area do Aluno</h2>
+<h2>Adicionar Disciplina</h2>
 <div class="row">
     <div class="col-md-12">
         <ul class="nav navbar-nav">
-            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Aluno" asp-action="Index"></a></li>
-            <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Aluno" asp-action="AdicionarAluno"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Disciplina" asp-action="Index"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Disciplina" asp-action="AdicionarDisciplina"></a></li>
             <li><a class="btn-menu glyphicon glyphicon-pencil btn" asp-area="" asp-controller="" asp-action=""></a></li>
             <li><a class="btn-menu glyphicon glyphicon-remove btn" asp-area="" asp-controller="" asp-action=""></a></li>
         </ul>
@@ -25,7 +25,7 @@
 </div>
 <hr />
 <div class="row">
-    <form id="fmrAluno" asp-controller="Aluno" asp-action="SalvarAluno" method="post">
+    <form id="frmDisciplina" asp-controller="Disciplina" asp-action="SalvarDisciplina" method="post">
         <!-- Input and Submit elements -->
 
         <div class="col-md-12">
@@ -36,20 +36,8 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                @Html.LabelFor(m => m.CPF, new { @id = "lblCPF" })
-                @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @id = "txtCPF" })
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                @Html.LabelFor(m => m.Logradouro, new { @id = "lblLogradouro" })
-                @Html.TextBoxFor(m => m.Logradouro, new { @class = "form-control", @id = "txtLogradouro" })
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                @Html.LabelFor(m => m.Telefone, new { @id = "lblTelefone" })
-                @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control", @id = "txtTelefone" })
+                @Html.LabelFor(m => m.CargaHoraria, new { @id = "lblCargaHoraria" })
+                @Html.TextBoxFor(m => m.CargaHoraria, new { @class = "form-control", @id = "txtCargaHoraria" })
             </div>
         </div>
         <div class="col-md-12">
@@ -60,6 +48,6 @@
 </div>
 <script type="text/javascript">
     function Limpar() {
-        $("#fmrAluno input:not(.btn)").each(function (i, e) { $(e).val("") });
+        $("#frmDisciplina input:not(.btn)").each(function (i, e) { $(e).val("") });
     }
 </script>
