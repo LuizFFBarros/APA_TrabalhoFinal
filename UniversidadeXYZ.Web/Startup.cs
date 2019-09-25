@@ -48,6 +48,7 @@ namespace UniversidadeXYZ.Web
             services.AddSingleton(cobolAluno);
             services.AddSingleton(cobolTurma);
             services.AddSingleton(typeof(MatriculaService));
+            services.AddSingleton(typeof(DisciplinaTurmaService));
             services.AddSingleton(typeof(IService<Aluno>), typeof(AlunoService));
             services.AddSingleton(typeof(IService<Disciplina>), typeof(DisciplinaService));
             services.AddSingleton(typeof(IService<DisciplinaTurma>), typeof(DisciplinaTurmaService));
@@ -56,6 +57,7 @@ namespace UniversidadeXYZ.Web
 
             //Repository
             services.AddSingleton(typeof(MatriculaRepository));
+            services.AddSingleton(typeof(DisciplinaTurmaRepository));
             services.AddSingleton(typeof(IRepository<Disciplina>), typeof(DisciplinaRepository));
             services.AddSingleton(typeof(IRepository<DisciplinaTurma>), typeof(DisciplinaTurmaRepository));
             services.AddSingleton(typeof(IRepository<Matricula>), typeof(MatriculaRepository));

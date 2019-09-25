@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UniversidadeXYZ.Dominio.Entidades;
+using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Infra.Data.Context;
 
 namespace UniversidadeXYZ.Infra.Data.Repository
@@ -12,11 +13,12 @@ namespace UniversidadeXYZ.Infra.Data.Repository
         private SQLContext context = new SQLContext();
         public List<DisciplinaTurma> BuscaPorTurma(int codigoTurma)
         {
-            return context.DisciplinaTurma.Where(d=>d.CodigoDaTurma == codigoTurma).ToList();
+            return context.DisciplinaTurma.Where(d => d.CodigoDaTurma == codigoTurma).ToList();
         }
         public List<DisciplinaTurma> BuscaPorDisciplina(int codigoDisciplina)
         {
             return context.DisciplinaTurma.Where(d => d.CodigoDisciplina == codigoDisciplina).ToList();
         }
+
     }
 }
