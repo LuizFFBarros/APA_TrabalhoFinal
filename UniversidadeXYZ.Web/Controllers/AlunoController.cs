@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UniversidadeXYZ.Dominio.Entidades;
+using UniversidadeXYZ.Dominio.Enum;
 using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Infra.Data.Repository;
 using UniversidadeXYZ.Service.Services;
@@ -17,11 +18,14 @@ namespace UniversidadeXYZ.Web.Controllers
     {
         IMapper _mapper;
         private readonly IService<Aluno> _alunoService;
-        public AlunoController(IMapper mapper, IService<Aluno> alunoService)
+        //private readonly IService<Matricula> _matriculaService;
+
+        public AlunoController(IMapper mapper, IService<Aluno> alunoService/*, IService<Matricula> matriculaService*/)
         {
             _mapper = mapper;
             _alunoService = alunoService;
-             
+            //_matriculaService = matriculaService;
+
         }
 
         public IActionResult Index()
@@ -45,7 +49,7 @@ namespace UniversidadeXYZ.Web.Controllers
             {
                 var alunoEntity = _mapper.Map<AlunoModel, Aluno>(alunoModel);
                 alunoEntity = _alunoService.Insert<AlunoValidator>(alunoEntity);
-                
+
             }
             catch (ArgumentException argEx)
             {
@@ -63,5 +67,29 @@ namespace UniversidadeXYZ.Web.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //public IActionResult VisualizarMatriculas(int codigoAluno)
+        //{
+        //    var listaMatriculasAluno = _mapper.Map<List<MatriculaModel>>(_matriculaService.BuscaMatriculasAluno(codigoAluno));
+
+        //    List<MatriculaAlunoModel> listaMatriculas = new List<MatriculaAlunoModel>();
+
+        //    foreach (MatriculaModel matricula in listaMatriculasAluno)
+        //    {
+        //        MatriculaAlunoModel matriculaAluno = new MatriculaAlunoModel
+        //        {
+        //            Codigo = matricula.CodigoMatricula,
+        //            Data = matricula.DataMatricula,
+        //            Turma = matricula.CodigoDaTurma,
+        //            Disciplina = matricula.DisciplinaTurma.Disciplina.Nome,
+        //            Situacao = ((SituacaoMatricula)matricula.CodigoSituacao).ToString()
+        //        };
+
+        //        listaMatriculas.Add(matriculaAluno);
+        //    }
+
+        //    return View(listaMatriculas);
+
+        //}
     }
 }

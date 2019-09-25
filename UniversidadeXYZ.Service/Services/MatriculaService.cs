@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FluentValidation;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Infra.Data.Repository;
 
 namespace UniversidadeXYZ.Service.Services
 {
-    public class MatriculaService : BaseService<Matricula>
+    public class MatriculaService : IService<Matricula>
     {
         private readonly MatriculaRepository _repository;
         public MatriculaService(MatriculaRepository repository)
@@ -44,6 +45,36 @@ namespace UniversidadeXYZ.Service.Services
         {
             var retorno = _repository.Update(matricula);
             return retorno;
+        }
+
+        public List<Matricula> BuscaMatriculasAluno(int codigoAluno)
+        {
+            return _repository.BuscaMatriculasAluno(codigoAluno);
+        }
+
+        public Matricula Insert<V>(Matricula obj) where V : AbstractValidator<Matricula>
+        {
+            throw new NotImplementedException();
+        }
+
+        public Matricula Update<V>(Matricula obj) where V : AbstractValidator<Matricula>
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Matricula Select(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Matricula> Select()
+        {
+            throw new NotImplementedException();
         }
     }
 }

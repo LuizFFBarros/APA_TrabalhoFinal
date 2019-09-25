@@ -1,0 +1,41 @@
+﻿@model List<UniversidadeXYZ.Web.Models.MatriculaAlunoModel>
+@{
+    ViewData["Title"] = "VisualizarMatriculas";
+}
+
+
+
+<h2>Matrículas do Aluno</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Data</th>
+                    <th>Turma</th>
+                    <th>Disciplina</th>
+                    <th>Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td><label>@Model[i].Codigo</label></td>
+                        <td><label>@Model[i].Data</label></td>
+                        <td><label>@Model[i].Turma</label></td>
+                        <td><label>@Model[i].Disciplina</label></td>
+                        <td><label>@Model[i].Situacao</label></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+   
