@@ -31,7 +31,7 @@ namespace UniversidadeXYZ.Test.DisciplinaTurma
         }
 
         [Fact]
-        public void TestaListagem()
+        public void TestaBusca()
         {
             DisciplinaTurmaRepository repository = new DisciplinaTurmaRepository();
             DisciplinaTurmaService disciplinaTurmaService = new DisciplinaTurmaService(repository);

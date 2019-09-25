@@ -55,7 +55,7 @@ namespace UniversidadeXYZ.Test.Matricula
         }
 
         [Fact]
-        public void TestaListagem()
+        public void TestaBusca()
         {
             MatriculaRepository repository = new MatriculaRepository();
             MatriculaService MatriculaService = new MatriculaService(repository);

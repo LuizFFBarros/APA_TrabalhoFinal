@@ -25,9 +25,11 @@ namespace UniversidadeXYZ.COBOL.Services
             alunos.RemoveAll(a => a.Codigo == id);
         }
 
-        public void Insert(Aluno aluno) 
+        public Aluno Insert(Aluno aluno) 
         {
             alunos.Add(aluno);
+
+            return alunos.Where(a => a.CPF == aluno.CPF).FirstOrDefault();
         }
 
         public Aluno Select(int id)
@@ -50,7 +52,7 @@ namespace UniversidadeXYZ.COBOL.Services
                 alunos.Add(aluno);
             }
 
-            return null;
+            return alunos.Where(a => a.CPF == aluno.CPF).FirstOrDefault();
         }
 
         private List<Aluno> MockAlunos()

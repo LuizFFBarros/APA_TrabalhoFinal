@@ -25,9 +25,11 @@ namespace UniversidadeXYZ.COBOL.Services
             turmas.RemoveAll(t => t.CodigoDaTurma == id);
         }
 
-        public void Insert(Turma turma)
+        public Turma Insert(Turma turma)
         {
             turmas.Add(turma);
+
+            return turmas.Where(t => t.CodigoDaTurma == turma.CodigoDaTurma).FirstOrDefault();
         }
 
         public Turma Select(int id)
@@ -50,7 +52,7 @@ namespace UniversidadeXYZ.COBOL.Services
                 turmas.Add(turma);
             }
 
-            return null;
+            return turmas.Where(t => t.CodigoDaTurma == turma.CodigoDaTurma).FirstOrDefault();
         }
 
         private List<Turma> MockTurmas()
