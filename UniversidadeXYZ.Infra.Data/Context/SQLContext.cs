@@ -12,8 +12,8 @@ namespace UniversidadeXYZ.Infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=UniversidadeXYZ;Integrated Security=true;");
+            optionsBuilder.UseLazyLoadingProxies()
+                          .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=UniversidadeXYZ;Integrated Security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace UniversidadeXYZ.Infra.Data.Context
             modelBuilder.Entity<DisciplinaTurma>().HasData(new DisciplinaTurma { CodigoDisciplina = 2, CodigoDaTurma = 2, QuantidadeVagas = 20 });
             modelBuilder.Entity<DisciplinaTurma>().HasData(new DisciplinaTurma { CodigoDisciplina = 3, CodigoDaTurma = 3, QuantidadeVagas = 20 });
 
-            modelBuilder.Entity<Matricula>().HasData(new Matricula { CodigoMatricula = 1, CodigoAluno = 1, DataMatricula = new System.DateTime(2019, 09, 19), CodigoDaTurma = 1, CodigoDisciplina = 1 });
+            modelBuilder.Entity<Matricula>().HasData(new Matricula { CodigoMatricula = 1, CodigoAluno = 1, DataMatricula = new System.DateTime(2019, 09, 19), CodigoDaTurma = 1, CodigoDisciplina = 1, CodigoSituacao = 1 });
 
         }
     }
