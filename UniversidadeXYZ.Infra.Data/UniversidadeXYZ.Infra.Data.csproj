@@ -9,6 +9,12 @@
     <Compile Remove="Migrations\20190918230916_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20190919013506_AdicionadoSeed.cs" />
     <Compile Remove="Migrations\20190919013506_AdicionadoSeed.Designer.cs" />
+    <Compile Remove="Migrations\20190926024021_AtualzacaoMigration.cs" />
+    <Compile Remove="Migrations\20190926024021_AtualzacaoMigration.Designer.cs" />
+    <Compile Remove="Migrations\20190926024310_SeedMatricula.cs" />
+    <Compile Remove="Migrations\20190926024310_SeedMatricula.Designer.cs" />
+    <Compile Remove="Migrations\20190926024514_SeedMatricula.cs" />
+    <Compile Remove="Migrations\20190926024514_SeedMatricula.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

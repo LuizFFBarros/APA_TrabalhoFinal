@@ -35,7 +35,9 @@ namespace UniversidadeXYZ.Infra.Data.Context
             modelBuilder.Entity<DisciplinaTurma>().HasData(new DisciplinaTurma { CodigoDisciplina = 3, CodigoDaTurma = 3, QuantidadeVagas = 20 });
 
             modelBuilder.Entity<Matricula>().HasData(new Matricula { CodigoMatricula = 1, CodigoAluno = 1, DataMatricula = new System.DateTime(2019, 09, 19), CodigoDaTurma = 1, CodigoDisciplina = 1, CodigoSituacao = 1 });
-
+            modelBuilder.Entity<Matricula>().HasData(new Matricula { CodigoMatricula = 2, CodigoAluno = 2, DataMatricula = new System.DateTime(2019, 09, 19), CodigoDaTurma = 2, CodigoDisciplina = 2, CodigoSituacao = 1 });
+            modelBuilder.Entity<Matricula>().HasData(new Matricula { CodigoMatricula = 3, CodigoAluno = 3, DataMatricula = new System.DateTime(2019, 09, 25), CodigoDaTurma = 2, CodigoDisciplina = 1, CodigoSituacao = 1 });
+            modelBuilder.Entity<Matricula>().HasData(new Matricula { CodigoMatricula = 7, CodigoAluno = 3, DataMatricula = new System.DateTime(2019, 08, 17), CodigoDaTurma = 3, CodigoDisciplina = 3, CodigoSituacao = 1 });
         }
     }
 }
