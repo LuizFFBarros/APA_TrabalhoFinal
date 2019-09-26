@@ -64,17 +64,17 @@ namespace UniversidadeXYZ.Service.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
         public Matricula Select(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Select(id);
         }
 
         public IList<Matricula> Select()
         {
-            throw new NotImplementedException();
+            return _repository.Select();
         }
     }
 }

@@ -12,5 +12,7 @@ namespace UniversidadeXYZ.Web.Models
         public int Turma { get; set; }
         public string Disciplina { get; set; }
         public string Situacao { get; set; }
+
+
     }
 }

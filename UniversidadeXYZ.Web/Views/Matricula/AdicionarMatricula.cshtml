@@ -1,0 +1,65 @@
+﻿@model UniversidadeXYZ.Web.Models.MatriculaModel
+@{
+    ViewData["Title"] = "Adicionar Matricula";
+
+}
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Erro))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Erro");
+    </script>
+}
+
+<h2>Adicionar Matricula</h2>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav navbar-nav">
+            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Matricula" asp-action="Index"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Matricula" asp-action="AdicionarMatricula"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-pencil btn" asp-area="" asp-controller="" asp-action=""></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-remove btn" asp-area="" asp-controller="" asp-action=""></a></li>
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <form id="frmMatricula" asp-controller="Matricula" asp-action="SalvarMatricula" method="post">
+        <!-- Input and Submit elements -->
+
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CodigoAluno, new { @id = "lblCodigoAluno" })
+                @Html.TextBoxFor(m => m.CodigoAluno, new { @class = "form-control", @id = "txtNome" })
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CPF, new { @id = "lblCPF" })
+                @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @id = "txtCPF" })
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Logradouro, new { @id = "lblLogradouro" })
+                @Html.TextBoxFor(m => m.Logradouro, new { @class = "form-control", @id = "txtLogradouro" })
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Telefone, new { @id = "lblTelefone" })
+                @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control", @id = "txtTelefone" })
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="submit" class="btn-primary btn btn-success" id="btnSalvar" value="Salvar" />
+            <input type="button" class="btn-primary btn btn-danger" id="btnLimpar" value="Limpar" onclick="Limpar();" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function Limpar() {
+        $("#frmMatricula input:not(.btn)").each(function (i, e) { $(e).val("") });
+    }
+</script>

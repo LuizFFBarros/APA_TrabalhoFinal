@@ -1,4 +1,4 @@
-﻿@model UniversidadeXYZ.Web.Models.MatriculaAdicionarModel
+﻿@model List<UniversidadeXYZ.Web.Models.MatriculaModel>
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,29 +19,38 @@
 </div>
 <hr />
 <div class="row">
-    <div class="col-md-12">
-        @Html.DropDownList("TESTE", Model.ListaDisciplinaTurma, "optionFirst", new { @class ="form-control" })
-        @*<table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nome</th>
-                    <th>CargaHoraria</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < Model.Count(); i++)
-                {
+        <div class="col-md-12">
+            @*@Html.DropDownList("TESTE", Model.ListaDisciplinaTurma, "optionFirst", new { @class ="form-control" })*@
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td><label>@Model[i].CodigoDisciplina</label></td>
-                        <td><label>@Model[i].Nome</label></td>
-                        <td><label>@Model[i].CargaHoraria</label></td>
-                    </tr>
-                }
+                        <th>CodigoAluno</th>
+                        <th>CodigoDaTurma</th>
+                        <th>CodigoDisciplina</th>
+                        <th>CodigoMatricula</th>
+                        <th>DataMatricula</th>
+                        <th>DisciplinaTurma.Disciplina.Nome</th>
+                        <th>DisciplinaTurma.Disciplina.CargaHoraria</th>
 
-            </tbody>
-        </table>*@
-    </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        <tr>
+                            <td><label>@Model[i].CodigoAluno                            </label></td>
+                            <td><label>@Model[i].CodigoDaTurma                          </label></td>
+                            <td><label>@Model[i].CodigoDisciplina                       </label></td>
+                            <td><label>@Model[i].CodigoMatricula                        </label></td>
+                            <td><label>@Model[i].DataMatricula                          </label></td>
+                            <td><label>@Model[i].DisciplinaTurma.Disciplina.Nome        </label></td>
+                            <td><label>@Model[i].DisciplinaTurma.Disciplina.CargaHoraria</label></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
 </div>
 
 <br />
