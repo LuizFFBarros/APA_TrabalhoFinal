@@ -1,4 +1,4 @@
-﻿@model List<UniversidadeXYZ.Web.Models.DisciplinaModel>
+﻿@model List<UniversidadeXYZ.Web.Models.DisciplinaTurmaModel>
 @{
     ViewData["Title"] = "VisualizarDisciplinas";
 }
@@ -8,6 +8,16 @@
 <h2>Disciplinas vinculadas à turma</h2>
 
 <hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav navbar-nav">
+            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Turma" asp-action="Index"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Turma" asp-action="VincularDisciplina" asp-route-codigoTurma=@ViewBag.CodigoTurma></a></li>
+        </ul>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-12">
         <table class="table table-bordered">
@@ -16,16 +26,18 @@
                     <th>Código</th>
                     <th>Nome</th>
                     <th>Carga Horária</th>
+                    <th>Quantidade Vagas</th>
                 </tr>
             </thead>
             <tbody>
                 @for (int i = 0; i < Model.Count(); i++)
                 {
-                    <tr>
-                        <td><label>@Model[i].CodigoDisciplina</label></td>
-                        <td><label>@Model[i].Nome</label></td>
-                        <td><label>@Model[i].CargaHoraria</label></td>
-                    </tr>
+                <tr>
+                    <td><label>@Model[i].CodigoDisciplina</label></td>
+                    <td><label>@Model[i].Disciplina.Nome</label></td>
+                    <td><label>@Model[i].Disciplina.CargaHoraria</label></td>
+                    <td><label>@Model[i].QuantidadeVagas</label></td>
+                </tr>
                 }
 
             </tbody>

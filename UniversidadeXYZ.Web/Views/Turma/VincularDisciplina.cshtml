@@ -1,0 +1,54 @@
+﻿@model UniversidadeXYZ.Web.Models.DisciplinaTurmaModel
+@{
+    ViewData["Title"] = "VincularDisciplina";
+  
+}
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Erro))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Erro");
+    </script>
+}
+
+<h2>Vincular Disciplina</h2>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav navbar-nav">
+            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Turma" asp-action="VisualizarDisciplinas"></a></li>
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <form id="fmrDisciplina" asp-controller="Turma" asp-action="SalvarDisciplinaTurma" method="post">
+        <!-- Input and Submit elements -->
+
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Disciplina, new { @id = "lblDisciplina" })
+                @Html.DropDownListFor(m => m.CodigoDisciplina, new SelectList(ViewBag.ListaDisciplinas, "Value", "Text"), "-- Selecione --", htmlAttributes: new { @class = "form-control", id = "ddlDisciplinas"})
+                @Html.HiddenFor(m => m.CodigoDaTurma)
+            </div>
+        </div>
+        
+
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.QuantidadeVagas, new { @id = "lblQuantidadeVagas" })
+                @Html.TextBoxFor(m => m.QuantidadeVagas, new { @class = "form-control", @id = "txtQuantidadeVagas" })
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <input type="submit" class="btn-primary btn btn-success" id="btnSalvar" value="Salvar" />
+            <input type="button" class="btn-primary btn btn-danger" id="btnLimpar" value="Limpar" onclick="Limpar();" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function Limpar() {
+        $("#fmrDisciplina input:not(.btn)").each(function (i, e) { $(e).val("") });
+    }
+</script>

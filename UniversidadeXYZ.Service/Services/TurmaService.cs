@@ -18,7 +18,7 @@ namespace UniversidadeXYZ.Service.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _cobolTurmaService.Delete(id);
         }
 
         public Turma Insert<V>(Turma obj) where V : AbstractValidator<Turma>
@@ -41,7 +41,15 @@ namespace UniversidadeXYZ.Service.Services
 
         public Turma Select(int id)
         {
-            throw new NotImplementedException();
+            var retorno = _cobolTurmaService.Select(id);
+
+            Turma turma = new Turma
+            {
+                CodigoDaTurma = retorno.CodigoDaTurma,
+                DataInicio = retorno.DataInicio
+            };
+
+            return turma;
         }
 
         public IList<Turma> Select()
@@ -58,7 +66,21 @@ namespace UniversidadeXYZ.Service.Services
 
         public Turma Update<V>(Turma obj) where V : AbstractValidator<Turma>
         {
-            throw new NotImplementedException();
+            var cobol = new COBOL.Entidades.Turma
+            {
+                CodigoDaTurma = obj.CodigoDaTurma,
+                DataInicio = obj.DataInicio
+            };
+
+            _cobolTurmaService.Insert(cobol);
+
+            var entidade = new Turma
+            {
+                CodigoDaTurma = cobol.CodigoDaTurma,
+                DataInicio = cobol.DataInicio
+            };
+
+            return entidade;
         }
     }
 }
