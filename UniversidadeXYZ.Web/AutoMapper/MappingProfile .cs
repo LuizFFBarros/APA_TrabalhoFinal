@@ -24,6 +24,7 @@ namespace UniversidadeXYZ.Web.AutoMapper
             CreateMap<Matricula, MatriculaModel>().ReverseMap();
             CreateMap<DisciplinaTurma, DisciplinaTurmaModel>().ReverseMap();
             CreateMap<Disciplina, DisciplinaModel>().ReverseMap();
+            CreateMap<Turma, TurmaModel>().ReverseMap();
         }
     }
 }

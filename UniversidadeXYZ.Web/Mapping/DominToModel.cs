@@ -16,6 +16,7 @@ namespace UniversidadeXYZ.Web.Mapping
             CreateMap<Matricula, MatriculaModel>();
             CreateMap<DisciplinaTurma, DisciplinaTurmaModel>();
             CreateMap<Disciplina, DisciplinaModel>();
+            CreateMap<Turma, TurmaModel>();
         }
     }
 }

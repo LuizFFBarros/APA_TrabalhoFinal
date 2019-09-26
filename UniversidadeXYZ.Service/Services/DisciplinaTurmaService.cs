@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using FluentValidation;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
@@ -53,7 +52,7 @@ namespace UniversidadeXYZ.Service.Services
 
         public IList<DisciplinaTurma> Select()
         {
-            throw new NotImplementedException();
+            return _repository.Select();
         }
     }
 }

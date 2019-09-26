@@ -1,0 +1,45 @@
+﻿@model UniversidadeXYZ.Web.Models.TurmaModel
+@{
+    ViewData["Title"] = "AdicionarTurma";
+
+}
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Erro))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Erro");
+    </script>
+}
+
+<h2>Adicionar Turma</h2>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav navbar-nav">
+            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Turma" asp-action="Index"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Turma" asp-action="AdicionarTurma"></a></li>
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <form id="frmTurma" asp-controller="Turma" asp-action="SalvarTurma" method="post">
+        <!-- Input and Submit elements -->
+
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.DataInicio, new { @id = "lblDataInicio" })
+                @Html.TextBoxFor(m => m.DataInicio, new { @class = "form-control", @id = "txtDataInicio" })
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="submit" class="btn-primary btn btn-success" id="btnSalvar" value="Salvar" />
+            <input type="button" class="btn-primary btn btn-danger" id="btnLimpar" value="Limpar" onclick="Limpar();" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function Limpar() {
+        $("#frmTurma input:not(.btn)").each(function (i, e) { $(e).val("") });
+    }
+</script>

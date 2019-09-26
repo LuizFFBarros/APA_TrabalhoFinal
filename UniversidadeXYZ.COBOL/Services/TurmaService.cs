@@ -62,11 +62,9 @@ namespace UniversidadeXYZ.COBOL.Services
 
             for (int i = 1; i <= 20; i++)
             {
-                var rdnIdTurma = r.Next(1, 20);
-
                 listTurmas.Add(new Turma {
-                    CodigoDaTurma = rdnIdTurma,
-                     DataInicio = new DateTime(2020, 01,01)
+                    CodigoDaTurma = i,
+                     DataInicio = new DateTime(2020, 01,01).AddDays(i)
                 });
             }
 

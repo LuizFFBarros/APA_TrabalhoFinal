@@ -19,8 +19,4 @@
     <ProjectReference Include="..\UniversidadeXYZ.Service\UniversidadeXYZ.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Turma\" />
-  </ItemGroup>
-
 </Project>

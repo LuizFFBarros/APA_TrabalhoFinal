@@ -1,0 +1,48 @@
+﻿@model List<UniversidadeXYZ.Web.Models.TurmaModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h2>Turma</h2>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav navbar-nav">
+            <li><a class="btn-menu glyphicon glyphicon-list btn" asp-area="" asp-controller="Turma" asp-action="Index"></a></li>
+            <li><a class="btn-menu glyphicon glyphicon-plus btn" asp-area="" asp-controller="Turma" asp-action="AdicionarTurma"></a></li>
+
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Data Início</th>
+                    <th>Visualizar Disciplinas</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                <tr>
+                    <td><label>@Model[i].CodigoDaTurma</label></td>
+                    <td><label>@Model[i].DataInicio</label></td>
+                    <td><label>@Model[i].DataInicio</label></td>
+                    <td><a class="btn-menu glyphicon glyphicon-book btn" asp-area="" asp-controller="Turma" asp-action="VisualizarDisciplinas" asp-route-codigoTurma="@Model[i].CodigoDaTurma"></a></td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
