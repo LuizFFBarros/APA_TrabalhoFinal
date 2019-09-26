@@ -10,6 +10,6 @@ namespace UniversidadeXYZ.Web.Models
         public DisciplinaModel Disciplina { get; set; }
         public int CodigoDisciplina { get; set; }
         public int CodigoDaTurma { get; set; }
-        public decimal QuantidadeVagas { get; set; }
+        public int QuantidadeVagas { get; set; }
     }
 }

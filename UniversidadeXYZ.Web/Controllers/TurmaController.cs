@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Service.Services;
@@ -17,12 +18,14 @@ namespace UniversidadeXYZ.Web.Controllers
     {
         private readonly IService<Turma> _turmaService;
         private readonly DisciplinaTurmaService _disciplinaTurmaService;
+        private readonly IService<Disciplina> _disciplinaService;
         private readonly IMapper _mapper;
-        public TurmaController(IMapper mapper, IService<Turma> turmaService, DisciplinaTurmaService disciplinaTurmaService)
+        public TurmaController(IMapper mapper, IService<Turma> turmaService, DisciplinaTurmaService disciplinaTurmaService, IService<Disciplina> disciplinaService)
         {
             _mapper = mapper;
             _turmaService = turmaService;
             _disciplinaTurmaService = disciplinaTurmaService;
+            _disciplinaService = disciplinaService;
         }
 
         public IActionResult Index()
@@ -62,22 +65,56 @@ namespace UniversidadeXYZ.Web.Controllers
         {
             List<DisciplinaTurmaModel> listaDisciplinasTurma = _mapper.Map<List<DisciplinaTurmaModel>>(_disciplinaTurmaService.BuscaPorTurma(codigoTurma));
 
-            List<DisciplinaModel> listaDisciplinas = new List<DisciplinaModel>();
 
-            foreach (DisciplinaTurmaModel disciplina in listaDisciplinasTurma)
+            ViewBag.CodigoTurma = codigoTurma;
+
+            return View(listaDisciplinasTurma);
+
+        }
+
+        public IActionResult VincularDisciplina(int codigoTurma)
+        {
+            IList<Disciplina> listaDisciplinas = _disciplinaService.Select();
+
+            List<SelectListItem> listItens = new List<SelectListItem>();
+
+            foreach(Disciplina disciplina in listaDisciplinas)
             {
-                DisciplinaModel disciplinaTurma = new DisciplinaModel
+                listItens.Add(new SelectListItem
                 {
-                    CodigoDisciplina = disciplina.CodigoDisciplina,
-                    Nome = disciplina.Disciplina.Nome,
-                    CargaHoraria = disciplina.Disciplina.CargaHoraria
-                };
-
-                listaDisciplinas.Add(disciplinaTurma);
+                    Text = disciplina.Nome,
+                    Value = disciplina.CodigoDisciplina.ToString()
+                });
             }
 
-            return View(listaDisciplinas);
+            ViewBag.ListaDisciplinas = listItens;
 
+            DisciplinaTurmaModel disciplinaTurmaModel = new DisciplinaTurmaModel();
+            disciplinaTurmaModel.CodigoDaTurma = codigoTurma;
+
+            return View(disciplinaTurmaModel);
+        }
+
+        public IActionResult SalvarDisciplinaTurma([FromForm] DisciplinaTurmaModel disciplinaTurmaModel)
+        {
+            try
+            {
+                var disciplinaTurmaEntity = _mapper.Map<DisciplinaTurmaModel, DisciplinaTurma>(disciplinaTurmaModel);
+                disciplinaTurmaEntity = _disciplinaTurmaService.Inserir(disciplinaTurmaEntity);
+
+            }
+            catch (ArgumentException argEx)
+            {
+                ViewBag.Erro = argEx.Message;
+                return View("VincularDisciplina", disciplinaTurmaModel);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Erro = ex.Message;
+
+            }
+
+            return RedirectToAction("VisualizarDisciplinas", new { codigoTurma = disciplinaTurmaModel.CodigoDaTurma });
         }
     }
 }
