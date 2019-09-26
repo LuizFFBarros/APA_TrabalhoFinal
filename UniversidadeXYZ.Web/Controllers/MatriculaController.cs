@@ -50,7 +50,7 @@ namespace UniversidadeXYZ.Web.Controllers
             var itens = disciplinas.Select(a => new SelectListItem
             {
                 Value = $"{a.CodigoDisciplina}-{a.CodigoDaTurma}",
-                Text = a.Disciplina.Nome
+                Text = $"{a.Disciplina.Nome} - Turma: {a.CodigoDaTurma}"
             }).ToList();
 
             ViewBag.ListaDisciplinasTurma = itens;
