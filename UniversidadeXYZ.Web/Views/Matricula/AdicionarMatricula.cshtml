@@ -34,24 +34,11 @@
                 @Html.TextBoxFor(m => m.CodigoAluno, new { @class = "form-control", @id = "txtNome" })
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                @Html.LabelFor(m => m.CPF, new { @id = "lblCPF" })
-                @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @id = "txtCPF" })
+         <div class="form-group">
+                @Html.LabelFor(m => m.DisciplinaTurma.Disciplina, new { @id = "lblDisciplina" })
+                @Html.DropDownListFor(m => m.CodigoDisciplinaTurma, new SelectList(ViewBag.ListaDisciplinasTurma, "Value", "Text"), "-- Selecione --", htmlAttributes: new { @class = "form-control", id = "ddlDisciplinasTurma"})
+                
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                @Html.LabelFor(m => m.Logradouro, new { @id = "lblLogradouro" })
-                @Html.TextBoxFor(m => m.Logradouro, new { @class = "form-control", @id = "txtLogradouro" })
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                @Html.LabelFor(m => m.Telefone, new { @id = "lblTelefone" })
-                @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control", @id = "txtTelefone" })
-            </div>
-        </div>
         <div class="col-md-12">
             <input type="submit" class="btn-primary btn btn-success" id="btnSalvar" value="Salvar" />
             <input type="button" class="btn-primary btn btn-danger" id="btnLimpar" value="Limpar" onclick="Limpar();" />

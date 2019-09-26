@@ -14,5 +14,7 @@ namespace UniversidadeXYZ.Web.Models
         public int CodigoDisciplina { get; set; }
         public int CodigoSituacao { get; set; }
         public DisciplinaTurmaModel DisciplinaTurma { get; set; }
+
+        public string CodigoDisciplinaTurma { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Enum;
 using UniversidadeXYZ.Service.Services;
+using UniversidadeXYZ.Service.Validators;
 using UniversidadeXYZ.Web.Models;
 
 namespace UniversidadeXYZ.Web.Controllers
@@ -34,35 +35,35 @@ namespace UniversidadeXYZ.Web.Controllers
 
         }
 
-        public IActionResult AdicionarMatricula(AlunoModel alunoModel = null)
+        public IActionResult AdicionarMatricula(MatriculaModel matriculaModel = null)
         {
 
             var disciplinas = _disciplinaTurmaService.Select();
-            var matriculaAdicionarModel = new MatriculaAdicionarModel();
+
             var itens = disciplinas.Select(a => new SelectListItem
             {
                 Value = $"{a.CodigoDisciplina}-{a.CodigoDaTurma}",
                 Text = a.Disciplina.Nome
             }).ToList();
 
-            matriculaAdicionarModel.ListaDisciplinaTurma = new SelectList(itens);
+            ViewBag.ListaDisciplinasTurma = itens;
 
 
-            return View(matriculaAdicionarModel);
+            return View(new MatriculaModel());
         }
 
-        public IActionResult SalvarMatricula([FromForm] AlunoModel alunoModel)
+        public IActionResult SalvarMatricula([FromForm] MatriculaModel matriculaModel)
         {
             try
             {
-                var alunoEntity = _mapper.Map<AlunoModel, Aluno>(alunoModel);
-                alunoEntity = _alunoService.Insert<AlunoValidator>(alunoEntity);
+                var alunoEntity = _mapper.Map<MatriculaModel, Matricula>(matriculaModel);
+                alunoEntity = _matriculaService.Insert<MatriculaValidator>(alunoEntity);
 
             }
             catch (ArgumentException argEx)
             {
                 ViewBag.Erro = argEx.Message;
-                return View("AdicionarAluno", alunoModel);
+                return View("AdicionarMatricula", matriculaModel);
             }
             catch (Exception ex)
             {
