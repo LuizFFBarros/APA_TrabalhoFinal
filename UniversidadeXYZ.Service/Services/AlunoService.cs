@@ -19,7 +19,7 @@ namespace UniversidadeXYZ.Service.Services
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _cobolAlunoService.Delete(id);
         }
 
         public Aluno Insert<V>(Aluno obj) where V : AbstractValidator<Aluno>
@@ -48,7 +48,18 @@ namespace UniversidadeXYZ.Service.Services
 
         public Aluno Select(int id)
         {
-            throw new NotImplementedException();
+            var retorno = _cobolAlunoService.Select(id);
+                
+            Aluno aluno = new Aluno
+            {
+                Codigo = retorno.Codigo,
+                CPF = retorno.CPF,
+                Logradouro = retorno.Logradouro,
+                Nome = retorno.Nome,
+                Telefone = retorno.Telefone,
+            };
+
+            return aluno;
         }
 
         public IList<Aluno> Select()
@@ -67,7 +78,28 @@ namespace UniversidadeXYZ.Service.Services
 
         public Aluno Update<V>(Aluno obj) where V : AbstractValidator<Aluno>
         {
-            throw new NotImplementedException();
+            var cobol = new COBOL.Entidades.Aluno
+            {
+                Codigo = obj.Codigo,
+                CPF = obj.CPF,
+                Logradouro = obj.Logradouro,
+                Nome = obj.Nome,
+                Telefone = obj.Telefone
+            };
+
+            var retorno = _cobolAlunoService.Update(cobol);
+
+            var entidade = new Aluno
+            {
+                Codigo = retorno.Codigo,
+                CPF = retorno.CPF,
+                Logradouro = retorno.Logradouro,
+                Nome = retorno.Nome,
+                Telefone = retorno.Telefone
+            };
+
+            return entidade;
+            
         }
     }
 }

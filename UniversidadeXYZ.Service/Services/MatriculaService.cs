@@ -54,27 +54,27 @@ namespace UniversidadeXYZ.Service.Services
 
         public Matricula Insert<V>(Matricula obj) where V : AbstractValidator<Matricula>
         {
-            throw new NotImplementedException();
+            return _repository.Insert(obj);
         }
 
         public Matricula Update<V>(Matricula obj) where V : AbstractValidator<Matricula>
         {
-            throw new NotImplementedException();
+            return _repository.Update(obj);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
         public Matricula Select(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Select(id);
         }
 
         public IList<Matricula> Select()
         {
-            throw new NotImplementedException();
+            return _repository.Select();
         }
     }
 }

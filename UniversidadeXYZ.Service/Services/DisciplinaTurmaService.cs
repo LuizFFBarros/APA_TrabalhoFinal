@@ -32,27 +32,28 @@ namespace UniversidadeXYZ.Service.Services
 
         public DisciplinaTurma Insert<V>(DisciplinaTurma obj) where V : AbstractValidator<DisciplinaTurma>
         {
-            throw new NotImplementedException();
+            return _repository.Insert(obj);
         }
 
         public DisciplinaTurma Update<V>(DisciplinaTurma obj) where V : AbstractValidator<DisciplinaTurma>
         {
-            throw new NotImplementedException();
+            return _repository.Update(obj);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
         public DisciplinaTurma Select(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Select(id);
         }
 
         public IList<DisciplinaTurma> Select()
         {
             return _repository.Select();
         }
+
     }
 }
