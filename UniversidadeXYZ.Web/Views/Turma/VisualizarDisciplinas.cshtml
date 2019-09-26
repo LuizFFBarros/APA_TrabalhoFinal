@@ -1,0 +1,37 @@
+﻿@model List<UniversidadeXYZ.Web.Models.DisciplinaModel>
+@{
+    ViewData["Title"] = "VisualizarDisciplinas";
+}
+
+
+
+<h2>Disciplinas vinculadas à turma</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Carga Horária</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td><label>@Model[i].CodigoDisciplina</label></td>
+                        <td><label>@Model[i].Nome</label></td>
+                        <td><label>@Model[i].CargaHoraria</label></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+   
