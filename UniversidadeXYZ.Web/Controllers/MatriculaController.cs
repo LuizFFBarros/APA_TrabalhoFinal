@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using UniversidadeXYZ.Service.Services;
+using UniversidadeXYZ.Web.Models;
 
 namespace UniversidadeXYZ.Web.Controllers
 {
@@ -21,7 +22,12 @@ namespace UniversidadeXYZ.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var disciplinas = _disciplinaTurmaService.Select();
+            var matriculaAdicionarModel = new MatriculaAdicionarModel();
+            matriculaAdicionarModel.ListaDisciplinaTurma = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(disciplinas, "CodigoDisciplina", "Disciplina.Nome");
+            
+
+            return View(matriculaAdicionarModel);
         }
     }
 }
