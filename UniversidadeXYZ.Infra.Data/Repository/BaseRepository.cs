@@ -13,6 +13,7 @@ namespace UniversidadeXYZ.Infra.Data.Repository
         private SQLContext context = new SQLContext();
         public T Insert(T obj)
         {
+            
             context.Set<T>().Add(obj);
             context.SaveChanges();
             return obj;

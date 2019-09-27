@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using UniversidadeXYZ.Dominio.Entidades;
 using UniversidadeXYZ.Dominio.Enum;
+using UniversidadeXYZ.Dominio.Interfaces;
 using UniversidadeXYZ.Service.Services;
 using UniversidadeXYZ.Service.Validators;
 using UniversidadeXYZ.Web.Models;
@@ -19,7 +21,12 @@ namespace UniversidadeXYZ.Web.Controllers
         private readonly DisciplinaTurmaService _disciplinaTurmaService;
         private readonly MatriculaService _matriculaService;
 
-        public MatriculaController(IMapper mapper, DisciplinaTurmaService disciplinaTurmaService, MatriculaService matriculaService)
+        public MatriculaController(
+            IMapper mapper, 
+            DisciplinaTurmaService disciplinaTurmaService, 
+            MatriculaService matriculaService,
+            IService<Matricula> matricula,
+            IService<Aluno> alunoService)
         {
             _mapper = mapper;
             _disciplinaTurmaService = disciplinaTurmaService;
@@ -56,6 +63,11 @@ namespace UniversidadeXYZ.Web.Controllers
         {
             try
             {
+                var vet = matriculaModel.CodigoDisciplinaTurma.Split('-');
+                matriculaModel.CodigoDisciplina = int.Parse(vet[0]);
+                matriculaModel.CodigoDaTurma = int.Parse(vet[1]);
+                matriculaModel.DataMatricula = DateTime.Now;
+                matriculaModel.CodigoMatricula = _matriculaService.BuscaMatriculasAluno(matriculaModel.CodigoAluno).FirstOrDefault().CodigoMatricula;
                 var alunoEntity = _mapper.Map<MatriculaModel, Matricula>(matriculaModel);
                 alunoEntity = _matriculaService.Insert<MatriculaValidator>(alunoEntity);
 
@@ -73,6 +85,17 @@ namespace UniversidadeXYZ.Web.Controllers
 
             return RedirectToAction("Index");
         }
-
+        
+        [HttpPost]
+        public IActionResult CancelarMatricula([FromBody]MatriculaModel data) 
+        {
+            
+           _matriculaService.CancelarMatricula(data.CodigoMatricula);
+            return RedirectToAction("Index");
+        }
+    }
+    public class Data
+    {
+        public string codigoMatricula { get; set; }
     }
 }

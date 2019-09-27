@@ -22,5 +22,14 @@ namespace UniversidadeXYZ.Infra.Data.Repository
             return context.Matricula.Where(m => m.CodigoAluno == codigoAluno && m.CodigoDaTurma == codigoTurma && m.CodigoDisciplina == codigoDisciplina && m.CodigoSituacao == (int)SituacaoMatricula.Ativa).FirstOrDefault();
         }
 
+        public void CancelarMatriculaI(int codigoMatricula)
+        {
+            var teste = context.Matricula.Where(a => a.CodigoMatricula == codigoMatricula).ToList();
+            var mat = context.Matricula.Where(a => a.CodigoMatricula == codigoMatricula).FirstOrDefault();
+            mat.CodigoSituacao = (int)SituacaoMatricula.Inativa;
+            context.SaveChanges();
+            
+            
+        }
     }
 }

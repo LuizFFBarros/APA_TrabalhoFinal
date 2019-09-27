@@ -5,7 +5,7 @@
 
 
 
-<h2>Disciplina</h2>
+<h2>Matriculas</h2>
 
 
 <div class="row">
@@ -20,38 +20,60 @@
 <hr />
 <div class="row">
         <div class="col-md-12">
-            @*@Html.DropDownList("TESTE", Model.ListaDisciplinaTurma, "optionFirst", new { @class ="form-control" })*@
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>CodigoAluno</th>
-                        <th>CodigoDaTurma</th>
-                        <th>CodigoDisciplina</th>
-                        <th>CodigoMatricula</th>
-                        <th>DataMatricula</th>
-                        <th>DisciplinaTurma.Disciplina.Nome</th>
-                        <th>DisciplinaTurma.Disciplina.CargaHoraria</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 0; i < Model.Count(); i++)
-                    {
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td><label>@Model[i].CodigoAluno                            </label></td>
-                            <td><label>@Model[i].CodigoDaTurma                          </label></td>
-                            <td><label>@Model[i].CodigoDisciplina                       </label></td>
-                            <td><label>@Model[i].CodigoMatricula                        </label></td>
-                            <td><label>@Model[i].DataMatricula                          </label></td>
-                            <td><label>@Model[i].DisciplinaTurma.Disciplina.Nome        </label></td>
-                            <td><label>@Model[i].DisciplinaTurma.Disciplina.CargaHoraria</label></td>
+                            <th></th>
+                            <th>Código de Aluno</th>
+                            <th>Código de DaTurma</th>
+                            <th>Código de Disciplina</th>
+                            <th>Código de Matrícula</th>
+                            <th>DataMatricula</th>
+                            <th>Disciplina</th>
+                            <th>Carga Hóraria</th>
+                            <th>Situação</th>
                         </tr>
-                    }
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                        
+                            <tr>
+                                <td><input type="button" onclick="CancelarMatricula(this);" value="Cancelar Matrícula" data-codigo="@Model[i].CodigoMatricula" class="btn btn-info" /></td>
+                                <td><label>@Model[i].CodigoAluno                            </label></td>
+                                <td><label>@Model[i].CodigoDaTurma                          </label></td>
+                                <td><label>@Model[i].CodigoDisciplina                       </label></td>
+                                <td><label>@Model[i].CodigoMatricula                        </label></td>
+                                <td><label>@Model[i].DataMatricula                          </label></td>
+                                <td><label>@Model[i].DisciplinaTurma.Disciplina.Nome        </label></td>
+                                <td><label>@Model[i].DisciplinaTurma.Disciplina.CargaHoraria</label></td>
+                                <td><label>@(Model[i].CodigoSituacao == 1 ? "Ativa" : "Inativa")</label></td>
+                            </tr>
+                        }
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
         </div>
 </div>
 
 <br />
 
+<script type="text/javascript">
+    function CancelarMatricula(elemento) {
+        var data = {};
+        data.CodigoMatricula = $(elemento).data("codigo");
+
+         $.ajax({
+            type: "POST",
+            url: '@Url.Action("CancelarMatricula", "Matricula")',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json"
+        }).done(function (response) {
+            console.log(response);
+        }).fail(function (response) {
+            console.log('Error: ' + response);
+        });
+
+    }
+</script>

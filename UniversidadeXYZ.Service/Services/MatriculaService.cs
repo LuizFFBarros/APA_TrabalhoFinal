@@ -76,5 +76,10 @@ namespace UniversidadeXYZ.Service.Services
         {
             return _repository.Select();
         }
+
+        public void CancelarMatricula(int codigoMatricula)
+        {
+            _repository.CancelarMatriculaI(codigoMatricula);
+        }
     }
 }
