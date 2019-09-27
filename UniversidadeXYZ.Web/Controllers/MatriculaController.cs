@@ -67,7 +67,7 @@ namespace UniversidadeXYZ.Web.Controllers
                 matriculaModel.CodigoDisciplina = int.Parse(vet[0]);
                 matriculaModel.CodigoDaTurma = int.Parse(vet[1]);
                 matriculaModel.DataMatricula = DateTime.Now;
-                matriculaModel.CodigoMatricula = _matriculaService.BuscaMatriculasAluno(matriculaModel.CodigoAluno).FirstOrDefault().CodigoMatricula;
+                matriculaModel.CodigoSituacao = (int)SituacaoMatricula.Ativa;
                 var alunoEntity = _mapper.Map<MatriculaModel, Matricula>(matriculaModel);
                 alunoEntity = _matriculaService.Insert<MatriculaValidator>(alunoEntity);
 
@@ -89,13 +89,11 @@ namespace UniversidadeXYZ.Web.Controllers
         [HttpPost]
         public IActionResult CancelarMatricula([FromBody]MatriculaModel data) 
         {
-            
-           _matriculaService.CancelarMatricula(data.CodigoMatricula);
-            return RedirectToAction("Index");
+
+            var matricula = _matriculaService.Select(data.CodigoMatricula);
+            matricula.CancelaMatricula();
+            _matriculaService.Update(matricula);
+            return Json("OK");
         }
-    }
-    public class Data
-    {
-        public string codigoMatricula { get; set; }
     }
 }

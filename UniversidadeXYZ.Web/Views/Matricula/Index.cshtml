@@ -47,7 +47,7 @@
                                 <td><label>@Model[i].DataMatricula                          </label></td>
                                 <td><label>@Model[i].DisciplinaTurma.Disciplina.Nome        </label></td>
                                 <td><label>@Model[i].DisciplinaTurma.Disciplina.CargaHoraria</label></td>
-                                <td><label>@(Model[i].CodigoSituacao == 1 ? "Ativa" : "Inativa")</label></td>
+                                <td><label>@(Model[i].CodigoSituacao == 1 ? "Ativo" : "Inativo")</label></td>
                             </tr>
                         }
 
@@ -70,9 +70,10 @@
             contentType: "application/json",
             dataType: "json"
         }).done(function (response) {
-            console.log(response);
+            if (response == "OK")
+                window.location.reload(true);
         }).fail(function (response) {
-            console.log('Error: ' + response);
+            alert(response);
         });
 
     }
